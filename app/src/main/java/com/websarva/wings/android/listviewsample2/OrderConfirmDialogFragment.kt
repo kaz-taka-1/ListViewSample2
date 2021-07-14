@@ -15,14 +15,14 @@ class OrderConfirmDialogFragment : DialogFragment(){
             builder.setTitle(R.string.dialog_title)
             builder.setMessage(R.string.dialog_msg)
             builder.setPositiveButton(R.string.dialog_btn_ok,DialogButtonClickListener())
-            builder.setPositiveButton(R.string.dialog_btn_ng,DialogButtonClickListener())
-            builder.setPositiveButton(R.string.dialog_btn_nu,DialogButtonClickListener())
+            builder.setNegativeButton(R.string.dialog_btn_ng,DialogButtonClickListener())
+            builder.setNeutralButton(R.string.dialog_btn_nu,DialogButtonClickListener())
             builder.create()
         }
         return dialog ?: throw IllegalStateException("アクティビティがnullです")
     }
-    private inner class DialogButtonClickListener{
-        override fun onClick(dialog:DialogInterface,which:int){
+    private inner class DialogButtonClickListener: DialogInterface.OnClickListener{
+        override fun onClick(dialog:DialogInterface,which:Int){
             var msg = ""
             when(which){
                 DialogInterface.BUTTON_POSITIVE->
